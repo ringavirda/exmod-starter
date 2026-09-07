@@ -1,5 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <!-- Restore needs $(TargetFramework) before any package is present, so this repo - standalone,
          package mode only - carries the default itself rather than through an import. -->
@@ -47,5 +46,4 @@
     </Content>
     <AdditionalFiles Include="assets/hellomodule/lang/en.json" />
   </ItemGroup>
-
 </Project>
