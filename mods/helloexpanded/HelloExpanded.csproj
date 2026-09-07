@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Restore needs $(TargetFramework) before any package is present, so this repo - standalone,
+         package mode only - carries the default itself rather than through an import. -->
+    <CurrentGameTfm Condition="'$(CurrentGameTfm)' == ''"
+      >net10.0</CurrentGameTfm>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Single-target, the current game version only: a starter mod carries no legacy game series
+         to build for, unlike the family repo this was generated from. -->
+    <TargetFramework>$(CurrentGameTfm)</TargetFramework>
+    <LangVersion>14</LangVersion>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>bin\$(Configuration)\Mods\mod</OutputPath>
+    <DefaultItemExcludes>$(DefaultItemExcludes);tests/**</DefaultItemExcludes>
+    <Nullable>enable</Nullable>
+    <AssemblyName>helloexpanded</AssemblyName>
+    <RootNamespace>HelloExpanded</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="VintagestoryAPI">
+      <HintPath>$(GamePath)/VintagestoryAPI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ExpandedLib" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <!-- hellomodule is this starter's own mod, referenced by project rather than package the same
+       way exlib is above. Copy-local off for the same reason: the player installs hellomodule as
+       its own mod. -->
+  <ItemGroup>
+    <ProjectReference Include="..\hellomodule\HelloModule.csproj">
+      <Private>false</Private>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="modinfo.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="modicon.png" Condition="Exists('modicon.png')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="assets/**/*">
+      <Link>assets/%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <AdditionalFiles Include="assets/helloexpanded/lang/en.json" />
+  </ItemGroup>
+
+</Project>

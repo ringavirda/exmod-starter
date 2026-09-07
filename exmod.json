@@ -1,0 +1,12 @@
+{
+  "tools": "0.2.0",
+  "series": ["1.22"],
+  "solution": "exmod-starter.sln",
+  "mods": {
+    "hellomodule": { "path": "mods/hellomodule" },
+    "helloexpanded": { "path": "mods/helloexpanded" }
+  },
+  "depends": {
+    "exlib": {"github":"ringavirda/exlib"}
+  }
+}

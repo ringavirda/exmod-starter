@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Restore needs $(TargetFramework) before any package is present, so this repo - standalone,
+         package mode only - carries the default itself rather than through an import. -->
+    <CurrentGameTfm Condition="'$(CurrentGameTfm)' == ''"
+      >net10.0</CurrentGameTfm>
+    <TargetFramework>$(CurrentGameTfm)</TargetFramework>
+    <LangVersion>14</LangVersion>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Private=true: the vstest discoverer probes a test assembly's direct references on disk
+         BEFORE the harness's assembly resolver can run, and a reference missing from the output
+         folder makes discovery silently report zero tests rather than fail. -->
+    <Reference Include="VintagestoryAPI">
+      <HintPath>$(GamePath)/VintagestoryAPI.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="VSSurvivalMod">
+      <HintPath>$(GamePath)/Mods/VSSurvivalMod.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="VSEssentials">
+      <HintPath>$(GamePath)/Mods/VSEssentials.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="NSubstitute" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ExpandedLib" />
+    <PackageReference Include="ExpandedLib.Testing" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HelloModule.csproj" />
+  </ItemGroup>
+
+</Project>

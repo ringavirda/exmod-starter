@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Restore needs $(TargetFramework) before any package is present, so this repo - standalone,
+         package mode only - carries the default itself rather than through an import. -->
+    <CurrentGameTfm Condition="'$(CurrentGameTfm)' == ''"
+      >net10.0</CurrentGameTfm>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Single-target, the current game version only: a starter mod carries no legacy game series
+         to build for, unlike the family repo this was generated from. -->
+    <TargetFramework>$(CurrentGameTfm)</TargetFramework>
+    <LangVersion>14</LangVersion>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>bin\$(Configuration)\Mods\mod</OutputPath>
+    <DefaultItemExcludes>$(DefaultItemExcludes);tests/**</DefaultItemExcludes>
+    <Nullable>enable</Nullable>
+    <AssemblyName>hellomodule</AssemblyName>
+    <RootNamespace>HelloModule</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="VintagestoryAPI">
+      <HintPath>$(GamePath)/VintagestoryAPI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ExpandedLib" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="modinfo.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="modicon.png" Condition="Exists('modicon.png')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="assets/**/*">
+      <Link>assets/%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <AdditionalFiles Include="assets/hellomodule/lang/en.json" />
+  </ItemGroup>
+
+</Project>

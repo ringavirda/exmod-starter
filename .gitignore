@@ -1,0 +1,21 @@
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+*.user
+.vs/
+.idea/
+TestResults/
+
+# Downloaded Vintage Story installs + cached archives.
+/.game
+/.gamedata
+
+# Self-contained .NET (SDK + runtimes).
+/.dotnet
+
+# Dependency mods `exmod provision mods` resolves and caches.
+/.exmod/
+
+# extools, cloned by scripts/exmod.sh or scripts/exmod.ps1 when no sibling checkout is found.
+/.extools/
