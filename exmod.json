@@ -7,6 +7,6 @@
     "helloexpanded": { "path": "mods/helloexpanded" }
   },
   "depends": {
-    "exlib": {"github":"ringavirda/exlib"}
+    "exlib": {"github":"ringavirda/modding-vsexlib"}
   }
 }
