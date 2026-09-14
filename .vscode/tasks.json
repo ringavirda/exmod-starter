@@ -110,8 +110,24 @@
         "-Version",
         "1.22",
         "-Kind",
-        "client"
+        "client",
+        "-Dest",
+        ".game/1.22-linux"
       ],
+      "osx": {
+        "command": "bash",
+        "args": [
+          "${workspaceFolder}/scripts/exmod.sh",
+          "provision",
+          "game",
+          "-Version",
+          "1.22",
+          "-Kind",
+          "client",
+          "-Dest",
+          ".game/1.22-macos"
+        ]
+      },
       "windows": {
         "command": "pwsh",
         "args": [
@@ -123,7 +139,9 @@
           "-Version",
           "1.22",
           "-Kind",
-          "client"
+          "client",
+          "-Dest",
+          ".game/1.22-windows"
         ]
       },
       "problemMatcher": []

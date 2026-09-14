@@ -6,7 +6,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "launch-prep (latest)",
-      "program": "${workspaceFolder}/.game/1.22/Vintagestory.dll",
+      "program": "${workspaceFolder}/.game/1.22-linux/Vintagestory.dll",
       "args": [
         "--tracelog",
         "--dataPath",
@@ -15,6 +15,9 @@
         "${workspaceFolder}/bin/Mods"
       ],
       "cwd": "${workspaceFolder}",
+      "linux": { "env": { "WAYLAND_DISPLAY": "none" } },
+      "osx": { "program": "${workspaceFolder}/.game/1.22-macos/Vintagestory.dll" },
+      "windows": { "program": "${workspaceFolder}/.game/1.22-windows/Vintagestory.dll" },
       "stopAtEntry": false,
       "console": "internalConsole",
       "requireExactSource": false

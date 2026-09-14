@@ -48,11 +48,15 @@ from exlib's own templates - `exmod help scaffold` lists every kind.
 ## Running it in VS Code
 
 `.vscode/tasks.json` and `launch.json` carry a build/pack/test task per game series this repo
-supports, launch-prep composites that provision the client build (`.game/<series>/Vintagestory.dll`,
-which plain `setup` does not fetch) and stage the mods first, and one launch configuration per
-series that boots the game with them loaded - opening this repo in VS Code and hitting F5 does the
-same thing `bash scripts/exmod.sh build latest && exmod stage && exmod client` would, with the
-game's own log in the debug console.
+supports, launch-prep composites that provision the client build (`.game/<series>-<platform>/`,
+one slot per platform so a checkout shared between Windows and WSL keeps both clients; plain
+`setup` does not fetch it) and stage the mods first, and one launch configuration per series that
+boots the game with them loaded - opening this repo in VS Code and hitting F5 does the same thing
+`bash scripts/exmod.sh build latest && exmod stage && exmod client` would, with the game's own log
+in the debug console. On Linux the game runs on X11 (GLFW's Wayland backend cannot place the
+cursor); a GPU driver that hangs the game is bypassed with `exmod client -Software`, or the same
+two variables in the launch configuration's `env` (`LIBGL_ALWAYS_SOFTWARE=1`,
+`GALLIUM_DRIVER=llvmpipe`).
 
 ## Licence
 
