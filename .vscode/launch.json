@@ -17,7 +17,16 @@
       "cwd": "${workspaceFolder}",
       "linux": { "env": { "WAYLAND_DISPLAY": "none" } },
       "osx": { "program": "${workspaceFolder}/.game/1.22-macos/Vintagestory.dll" },
-      "windows": { "program": "${env:LOCALAPPDATA}/exmod/game/1.22/Vintagestory.dll" },
+      "windows": {
+        "program": "${env:LOCALAPPDATA}/exmod/game/1.22/Vintagestory.dll",
+        "args": [
+          "--tracelog",
+          "--dataPath",
+          "${env:LOCALAPPDATA}/exmod/data/exmod-starter",
+          "--addModPath",
+          "${workspaceFolder}/bin/Mods"
+        ]
+      },
       "stopAtEntry": false,
       "console": "internalConsole",
       "requireExactSource": false
