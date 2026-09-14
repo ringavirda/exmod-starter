@@ -17,7 +17,7 @@
       "cwd": "${workspaceFolder}",
       "linux": { "env": { "WAYLAND_DISPLAY": "none" } },
       "osx": { "program": "${workspaceFolder}/.game/1.22-macos/Vintagestory.dll" },
-      "windows": { "program": "${workspaceFolder}/.game/1.22-windows/Vintagestory.dll" },
+      "windows": { "program": "${env:LOCALAPPDATA}/exmod/game/1.22/Vintagestory.dll" },
       "stopAtEntry": false,
       "console": "internalConsole",
       "requireExactSource": false
