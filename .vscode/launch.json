@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "exmod-starter (latest)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "launch-prep (latest)",
+      "program": "${workspaceFolder}/.game/1.22/Vintagestory.dll",
+      "args": [
+        "--tracelog",
+        "--dataPath",
+        "${workspaceFolder}/.gamedata",
+        "--addModPath",
+        "${workspaceFolder}/bin/Mods"
+      ],
+      "cwd": "${workspaceFolder}",
+      "env": { "DOTNET_ROOT": "${workspaceFolder}/.dotnet" },
+      "stopAtEntry": false,
+      "console": "internalConsole",
+      "requireExactSource": false
+    }
+  ]
+}

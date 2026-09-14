@@ -1,0 +1,90 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "launch-prep (latest)",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "provision-game (1.22)",
+        "stage-mods (latest)"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "stage-mods (latest)",
+      "type": "process",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-File",
+        "${workspaceFolder}/scripts/exmod.ps1",
+        "stage"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Publish mods",
+      "type": "process",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-File",
+        "${workspaceFolder}/scripts/exmod.ps1",
+        "pack"
+      ],
+      "problemMatcher": []
+    },
+
+    // ----------------------------------------------------------------------------------------
+    // Test runners - separate, independently-runnable targets per game version. Each builds the
+    // test projects for that version (auto-provisioning its game binaries on demand) and runs the
+    // suite; projects run in parallel. "Test: all" runs every version concurrently. Pick one from
+    // "Run Test Task", or run any via "Run Task".
+    // ----------------------------------------------------------------------------------------
+    {
+      "label": "Test: latest (1.22)",
+      "type": "process",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-File",
+        "${workspaceFolder}/scripts/exmod.ps1",
+        "test",
+        "latest"
+      ],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Test: all versions (parallel)",
+      "type": "process",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-File",
+        "${workspaceFolder}/scripts/exmod.ps1",
+        "test",
+        "all"
+      ],
+      "group": { "kind": "test", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "provision-game (1.22)",
+      "type": "process",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-File",
+        "${workspaceFolder}/scripts/exmod.ps1",
+        "provision",
+        "game",
+        "-Version",
+        "1.22",
+        "-Kind",
+        "client"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}
