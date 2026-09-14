@@ -4,9 +4,7 @@
   "solution": "exmod-starter.sln",
   "mods": {
     "grains": { "path": "mods/grains" },
-    "handmill": { "path": "mods/handmill" },
-    "hellomodule": { "path": "mods/hellomodule" },
-    "helloexpanded": { "path": "mods/helloexpanded" }
+    "handmill": { "path": "mods/handmill" }
   },
   "depends": {
     "exlib": { "github": "ringavirda/modding-vsexlib" }
