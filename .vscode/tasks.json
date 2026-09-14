@@ -13,25 +13,39 @@
     {
       "label": "stage-mods (latest)",
       "type": "process",
-      "command": "pwsh",
+      "command": "bash",
       "args": [
-        "-NoProfile",
-        "-File",
-        "${workspaceFolder}/scripts/exmod.ps1",
+        "${workspaceFolder}/scripts/exmod.sh",
         "stage"
       ],
+      "windows": {
+        "command": "pwsh",
+        "args": [
+          "-NoProfile",
+          "-File",
+          "${workspaceFolder}/scripts/exmod.ps1",
+          "stage"
+        ]
+      },
       "problemMatcher": []
     },
     {
       "label": "Publish mods",
       "type": "process",
-      "command": "pwsh",
+      "command": "bash",
       "args": [
-        "-NoProfile",
-        "-File",
-        "${workspaceFolder}/scripts/exmod.ps1",
+        "${workspaceFolder}/scripts/exmod.sh",
         "pack"
       ],
+      "windows": {
+        "command": "pwsh",
+        "args": [
+          "-NoProfile",
+          "-File",
+          "${workspaceFolder}/scripts/exmod.ps1",
+          "pack"
+        ]
+      },
       "problemMatcher": []
     },
 
@@ -44,39 +58,53 @@
     {
       "label": "Test: latest (1.22)",
       "type": "process",
-      "command": "pwsh",
+      "command": "bash",
       "args": [
-        "-NoProfile",
-        "-File",
-        "${workspaceFolder}/scripts/exmod.ps1",
+        "${workspaceFolder}/scripts/exmod.sh",
         "test",
         "latest"
       ],
+      "windows": {
+        "command": "pwsh",
+        "args": [
+          "-NoProfile",
+          "-File",
+          "${workspaceFolder}/scripts/exmod.ps1",
+          "test",
+          "latest"
+        ]
+      },
       "group": "test",
       "problemMatcher": []
     },
     {
       "label": "Test: all versions (parallel)",
       "type": "process",
-      "command": "pwsh",
+      "command": "bash",
       "args": [
-        "-NoProfile",
-        "-File",
-        "${workspaceFolder}/scripts/exmod.ps1",
+        "${workspaceFolder}/scripts/exmod.sh",
         "test",
         "all"
       ],
+      "windows": {
+        "command": "pwsh",
+        "args": [
+          "-NoProfile",
+          "-File",
+          "${workspaceFolder}/scripts/exmod.ps1",
+          "test",
+          "all"
+        ]
+      },
       "group": { "kind": "test", "isDefault": true },
       "problemMatcher": []
     },
     {
       "label": "provision-game (1.22)",
       "type": "process",
-      "command": "pwsh",
+      "command": "bash",
       "args": [
-        "-NoProfile",
-        "-File",
-        "${workspaceFolder}/scripts/exmod.ps1",
+        "${workspaceFolder}/scripts/exmod.sh",
         "provision",
         "game",
         "-Version",
@@ -84,6 +112,20 @@
         "-Kind",
         "client"
       ],
+      "windows": {
+        "command": "pwsh",
+        "args": [
+          "-NoProfile",
+          "-File",
+          "${workspaceFolder}/scripts/exmod.ps1",
+          "provision",
+          "game",
+          "-Version",
+          "1.22",
+          "-Kind",
+          "client"
+        ]
+      },
       "problemMatcher": []
     }
   ]

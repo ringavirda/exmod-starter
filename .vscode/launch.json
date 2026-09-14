@@ -15,7 +15,6 @@
         "${workspaceFolder}/bin/Mods"
       ],
       "cwd": "${workspaceFolder}",
-      "env": { "DOTNET_ROOT": "${workspaceFolder}/.dotnet" },
       "stopAtEntry": false,
       "console": "internalConsole",
       "requireExactSource": false
