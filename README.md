@@ -4,8 +4,8 @@ A starter monorepo for [Expanded Library](https://github.com/ringavirda/modding-
 
 | mod | name | description |
 |---|---|---|
-| `mods/grains` | Grains | Sample module: a grain catalogue any mod adds to, sack items per grain, a block info behaviour and a command. |
-| `mods/handmill` | Hand Mill | Sample mod walking through exlib's Getting-Started guide: a shaft and crank on the mpenergy network, a flywheel, a designed multiblock mill and a JSON-only quern stand. |
+| `mods/twintubblower` | Twin Tub Blower | Sample mod: a mechanically driven bellows that is both a mega-block reserving a footprint for its own drive port and a pipe node producing into the network it stands in. |
+| `mods/burdenmaker` | Burden Maker | Sample mod: a 9-cell mega-block stock house, two hoppers over a shared basin with one sliding gate, raised through a five-stage right-click construction and rendered through a permanent pose animation. |
 
 ## Before you start
 
@@ -62,13 +62,17 @@ two variables in the launch configuration's `env` (`LIBGL_ALWAYS_SOFTWARE=1`,
 
 ## Playing the samples
 
-The hand mill is a line of mechanical power: a crank, a run of drive shafts, a flywheel and the
-mill core on its quern stand. Right-click the crank to wind it and the line spins up, then coasts
-down as the wind runs out; the flywheel keeps it turning between winds and reserves the eight
-cells around its hub (sneak-click any of them to brake it). The mill is complete once the core
-stands on its quern stand; Ctrl + Shift + right-click either of them to see what is still missing.
-Right-click the core with a sack of grain to load it, and at speed it grinds the grain to flour.
-The grains mod supplies the grain and the sacks.
+The twin-tub blower is a mechanically driven pair of bellows: place one, then mount an axle against
+its upper rear cell (the face turned away from where the blower opens onto its pipe run) and turn
+it - the bellows spin up and start pushing cold air into the pipe network the blower stands in,
+scaling with how fast the axle turns. Look at the blower to read its current output.
+
+The burden maker is a designed multiblock stock house: place it, then walk it through its five
+construction stages (the bare base, the base extension, the hopper masonry, the ironwork hoppers,
+then the gate lids), each needing its own fired brick or iron. Once built, right-click the wide
+upper cells to load crushed iron ore, the narrow upper cell to load lime, and the centre cell at
+its base to pull the gate - both hoppers drop together into the shared basin as one batch, which
+you then take back out from any open basin cell.
 
 ## Licence
 

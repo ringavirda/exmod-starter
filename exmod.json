@@ -1,10 +1,10 @@
 {
-  "tools": "0.3.2",
+  "tools": "0.3.3",
   "series": ["1.22"],
   "solution": "exmod-starter.sln",
   "mods": {
-    "grains": { "path": "mods/grains" },
-    "handmill": { "path": "mods/handmill" }
+    "twintubblower": { "path": "mods/twintubblower" },
+    "burdenmaker": { "path": "mods/burdenmaker" }
   },
   "depends": {
     "exlib": { "github": "ringavirda/modding-vsexlib" }
