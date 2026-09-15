@@ -86,6 +86,9 @@ public class BlockEntityTwinTubMPBlower : BlockEntityPipe, IRenderer {
 
   public override void Initialize(ICoreAPI api) {
     base.Initialize(api);
+    // Resolved on both sides (IsConstructed gates the blow tick); it only builds and poses on the client.
+    _animator = new ConstructedAnimator(this, () => Block.Code.Path);
+    _animator.Initialize(ApplyPose);
     // One blow per second, server-side. The network tick runs at the same interval, so air is produced
     // and then distributed in the same beat.
     if (api.Side == EnumAppSide.Server) {
@@ -93,9 +96,6 @@ public class BlockEntityTwinTubMPBlower : BlockEntityPipe, IRenderer {
       return;
     }
 
-    // Resolved on both sides (IsConstructed gates the blow tick); it only builds and poses on the client.
-    _animator = new ConstructedAnimator(this, () => Block.Code.Path);
-    _animator.Initialize(ApplyPose);
     (api as ICoreClientAPI)?.Event.RegisterRenderer(
       this,
       EnumRenderStage.Before,
@@ -139,8 +139,8 @@ public class BlockEntityTwinTubMPBlower : BlockEntityPipe, IRenderer {
   private void OnBlowTick(float dt) {
     int axleState = AxleState();
     bool built = IsConstructed;
-    // Vanilla's own counters: the index of the last completed stage over the last index, so a
-    // finished machine reads 4/4. The sample compiles against the released framework package.
+    // Vanilla's own counters, read directly: the sample compiles against the released framework
+    // package.
     string stage = _animator?.Rcc is { } rcc
       ? $"{rcc.CurrentCompletedStage}/{rcc.Stages}"
       : "-";
