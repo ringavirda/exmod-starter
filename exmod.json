@@ -4,7 +4,9 @@
   "solution": "exmod-starter.sln",
   "mods": {
     "twintubblower": { "path": "mods/twintubblower" },
-    "burdenmaker": { "path": "mods/burdenmaker" }
+    "burdenmaker": { "path": "mods/burdenmaker" },
+    "platedpipes": { "path": "mods/platedpipes" },
+    "smokestack": { "path": "mods/smokestack" }
   },
   "depends": {
     "exlib": { "github": "ringavirda/modding-vsexlib" }

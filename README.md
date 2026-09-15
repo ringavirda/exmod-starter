@@ -6,6 +6,8 @@ A starter monorepo for [Expanded Library](https://github.com/ringavirda/modding-
 |---|---|---|
 | `mods/twintubblower` | Twin Tub Blower | Sample mod: a mechanically driven bellows that is both a mega-block reserving a footprint for its own drive port and a pipe node producing into the network it stands in. |
 | `mods/burdenmaker` | Burden Maker | Sample mod: a 9-cell mega-block stock house, two hoppers over a shared basin with one sliding gate, raised through a five-stage right-click construction and rendered through a permanent pose animation. |
+| `mods/platedpipes` | Plated Pipes | Sample mod: a single pipe tier, straight/bend/T/X segments plus wall passthroughs, sharing exlib's own pipe network. |
+| `mods/smokestack` | Smoke Stack | Sample mod: a multiblock chimney that draws gas off a pipe network and vents it to the sky. |
 
 ## Before you start
 
@@ -73,6 +75,15 @@ then the gate lids), each needing its own fired brick or iron. Once built, right
 upper cells to load crushed iron ore, the narrow upper cell to load lime, and the centre cell at
 its base to pull the gate - both hoppers drop together into the shared basin as one batch, which
 you then take back out from any open basin cell.
+
+The plated pipes are the network example: straight runs, bends, tees and crosses of one pipe tier,
+registered with a burst pressure and a throughput of their own, plus the wall passthroughs the
+library ships shapes for. Lay a run from the blower's open end and the air goes down it.
+
+The smoke stack is the multiblock example: place the intake against the end of that run, then
+Ctrl + Shift + right-click it to see the outline of the 72-cell chimney and build it from refractory
+brick and bricks. Once complete it draws the blower's air off the network and vents it as a plume,
+so the whole chain - axle, blower, pipes, stack - can be watched working end to end.
 
 ## Licence
 
